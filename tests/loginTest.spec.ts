@@ -1,9 +1,6 @@
-import { smartTest } from "../UI/Core/TestType";
+import { smartTest } from "../UI/pages/PageFixtur";
 
 
-
-// smartTest.describe('Pyramid Core Test', () => { 
-    smartTest('Pyramid Core Test', async ({ loginPage }) => {
-        await loginPage.loginWith('Mnanda.kishore', 'Welcome@01');
-    });
-// });
+smartTest('Pyramid Core Test', async ({ loginPage }) => {
+    await loginPage.loginWith('Mnanda.kishore', 'Welcome@01');
+})

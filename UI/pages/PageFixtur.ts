@@ -1,14 +1,13 @@
-import { Login } from "../pages/Login";
-import { smartTest as baseTest } from "./TestImp";
-// import { test as baseTest } from '@playwright/test';
+import { Login } from "./Login";
+import { smartTest as baseTest } from "../Core/TestImp";
 
 type myPage = {
     loginPage: Login
 }
 
 export const smartTest = baseTest.extend<myPage>({
-    loginPage: async ({ smartPage }, use) => {
-        await use(new Login(smartPage));
+    loginPage: async ({ smartPage,smartTestInfo }, use) => {
+        await use(new Login(smartPage,smartTestInfo));
     },
 });
 

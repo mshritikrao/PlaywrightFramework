@@ -1,11 +1,11 @@
-import { Locator, Page, Response } from "@playwright/test";
+import { Locator, Page, PageScreenshotOptions, Response } from "@playwright/test";
 import { roleOptions, roleType } from "./param";
 import { TestLocaterImp } from "./TestLocaterImp";
 import { BasePage } from "./BasePage";
 
 
 export class TestPageImp {
-    private page: Page;
+    public page: Page;
 
     constructor(page: Page) {
         this.page = page;
@@ -44,6 +44,10 @@ export class TestPageImp {
     }
     content() {
         return this.page.content();
+    }
+
+    screenshot(options?: PageScreenshotOptions | undefined) {
+        return this.page.screenshot();
     }
 
 
