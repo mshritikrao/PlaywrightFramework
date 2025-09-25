@@ -15,7 +15,7 @@ export const smartTest = test.extend<myFixturs>({
         await use(testInfo);
     },
     basePage: async ({ }, use) => {
-        const basePage = await BasePage.create("edge", false, "large");
+        const basePage = await BasePage.create("edge", true, "large");
         await use(basePage);
     },
     smartPage: async ({ basePage }, use) => {
