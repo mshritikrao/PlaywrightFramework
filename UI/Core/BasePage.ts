@@ -12,6 +12,8 @@ export class BasePage {
     static async create(browserType: string, runType: boolean, screenSize: string): Promise<BasePage> {
         const browser = await BrowserFactory.getBrowser(browserType);
         const page = await browser.setBrowser(runType, screenSize);
+        page.setDefaultTimeout(10000);
+        page.setDefaultNavigationTimeout(40000);
         // console.log(page.content())
         await page.goto("https://pyramidcore.pyramidci.com/");
         return new BasePage(page);

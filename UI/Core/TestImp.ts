@@ -1,31 +1,34 @@
-import { test, Page } from "@playwright/test"
-// import { Page } from "@playwright/test"
+import { test, TestInfo } from "@playwright/test"
 import { TestPageImp } from "./TestPageImp"
 import { BasePage } from "./BasePage"
-import { Login } from "../pages/Login"
 
 
 type myFixturs = {
-    smartPage: TestPageImp
     basePage: BasePage
+    smartPage: TestPageImp
+    smartTestInfo: TestInfo
     // smartLocator: TestLocaterImp
 }
 
-
-// type myPage = {
-//     loginPage: Login
-// }
-
 export const smartTest = test.extend<myFixturs>({
+    smartTestInfo: async ({ }, use, testInfo) => {
+        await use(testInfo);
+    },
     basePage: async ({ }, use) => {
-        const basePage = await BasePage.create("edge", false, "max");
+        const basePage = await BasePage.create("edge", false, "large");
         await use(basePage);
     },
     smartPage: async ({ basePage }, use) => {
         await use(new TestPageImp(basePage.getPage()));
 
-    }
+    },
 });
+
+
+
+// type myPage = {
+//     loginPage: Login
+// }
 
 
 // export const smartTest = baseTest.extend<myPage>({

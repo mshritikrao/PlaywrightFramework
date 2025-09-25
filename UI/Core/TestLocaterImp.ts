@@ -26,4 +26,8 @@ export class TestLocaterImp {
         return this.locators.locator(selectorOrLocator, options);
     }
 
+    async isVisible(options?: { timeout?: number; }) {
+        return this.locators.isVisible();
+    }
+
 }
