@@ -16,32 +16,21 @@ export class Login {
         this.userID = this.smartPage.getByPlaceholder('User Id / Official Email Id');
         this.password = this.smartPage.getByPlaceholder('Password');
         this.login = this.smartPage.locater('input[type="image"][id="pydLogin_btnLogin"]');
+        //  this.smartPage.locater('input[type="image"][id="pydLogin_btnLogin"]');
     }
 
     async loginWith(userId: string, password: string) {
         await this.userID.fill(userId);
         await this.password.fill(password);
+        const loginPageSS = await this.smartPage.screenshot({ fullPage: true });
+        await this.login.click();
         await this.smartTestInfo.attach('Login Info'
             , {
-                body: await this.smartPage.screenshot({ path: `Login with UserId: ${userId} and Password: ${password}`, fullPage: true })
+                body: loginPageSS
                 , contentType: 'image/png'
             }
         );
-        await this.login.click();
-        expect(await this.smartPage.locater('//*[@class="logout"]').isVisible());
-        await this.smartTestInfo.attach('Dashbord Info'
-            , {
-                body: await this.smartPage.screenshot({ fullPage: true })
-                , contentType: 'image/png'
-            }
-        );
-
-        await this.smartTestInfo.attach('Dashbord check'
-            , {
-                body: await this.smartPage.page.screenshot({ fullPage: true })
-                , contentType: 'image/png'
-            }
-        );
+        expect(await this.smartPage.locater('//*[@class="logout"]').isVisible()).toBe(true);
     }
 
 
