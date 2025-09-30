@@ -6,8 +6,8 @@ type myPage = {
 }
 
 export const smartTest = baseTest.extend<myPage>({
-    loginPage: async ({ smartPage,smartTestInfo }, use) => {
-        await use(new Login(smartPage,smartTestInfo));
+    loginPage: async ({ smartPage, smartTestInfo }, use) => {
+        await use(new Login(smartPage, smartTestInfo));
     },
 });
 

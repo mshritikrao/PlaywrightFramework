@@ -1,5 +1,5 @@
 
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { BrowserFactory } from "../Browser/BrowserFactory";
 
 export class BasePage {
@@ -14,7 +14,6 @@ export class BasePage {
         const page = await browser.setBrowser(runType, screenSize);
         page.setDefaultTimeout(10000);
         page.setDefaultNavigationTimeout(40000);
-        // console.log(page.content())
         await page.goto("https://pyramidcore.pyramidci.com/");
         return new BasePage(page);
     }

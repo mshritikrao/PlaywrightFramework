@@ -1,6 +1,7 @@
 import { test, TestInfo } from "@playwright/test"
 import { TestPageImp } from "./TestPageImp"
 import { BasePage } from "./BasePage"
+import { TestLocaterImp } from "./TestLocaterImp"
 
 
 type myFixturs = {
@@ -15,13 +16,16 @@ export const smartTest = test.extend<myFixturs>({
         await use(testInfo);
     },
     basePage: async ({ }, use) => {
-        const basePage = await BasePage.create("edge", true, "large");
+        const basePage = await BasePage.create("edge", false, "large");
         await use(basePage);
     },
-    smartPage: async ({ basePage }, use) => {
-        await use(new TestPageImp(basePage.getPage()));
+    smartPage: async ({ basePage, smartTestInfo }, use) => {
+        await use(new TestPageImp(basePage.getPage(), smartTestInfo));
 
     },
+    // smartLocator: async ({ smartPage, smartTestInfo }, use) => {
+    //     await use(new TestLocaterImp(smartPage, smartTestInfo));
+    // }
 });
 
 
