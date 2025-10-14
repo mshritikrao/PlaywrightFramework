@@ -9,7 +9,7 @@ smartTest.describe('login Test', () => {
     smartTest('Pyramid Core Test', async ({ smartPage, loginPage,Logger }) => {
         Logger.logger.info('Starting example test');
         await smartPage.goTo("https://pyramidcore.pyramidci.com/");
-        await loginPage.loginWith('Mnanda.kishore', 'Welcome@01');
+        // await loginPage.loginWith('xxxxx', 'xxx');
     });
 
     smartTest.afterEach(
