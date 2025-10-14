@@ -14,7 +14,7 @@ export class BasePage {
         const page = await browser.setBrowser(runType, screenSize);
         page.setDefaultTimeout(10000);
         page.setDefaultNavigationTimeout(40000);
-        await page.goto("https://pyramidcore.pyramidci.com/");
+        // await page.goto("https://pyramidcore.pyramidci.com/");
         return new BasePage(page);
     }
 

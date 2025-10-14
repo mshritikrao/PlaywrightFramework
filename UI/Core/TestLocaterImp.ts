@@ -1,5 +1,6 @@
-import { Locator, TestInfo } from "@playwright/test";
+import { ElementHandle, Locator, TestInfo } from "@playwright/test";
 import { fillOptions, clearOptions } from "./param";
+import { smartTest } from "./TestImp";
 
 export class TestLocaterImp {
     private locators: Locator;
@@ -28,8 +29,13 @@ export class TestLocaterImp {
         } | undefined;
         timeout?: number | undefined;
         trial?: boolean | undefined;
-    } | undefined) {
-        await this.locators.click(options);
+    } | undefined): Promise<void> {
+        try {
+            await this.locators.click(options);
+        } catch (error) {
+            this.smartTestInfo.status = "failed";
+            // return false;
+        }
     }
 
     async locator(selectorOrLocator: string | Locator, options?: {
@@ -41,13 +47,30 @@ export class TestLocaterImp {
         return this.locators.locator(selectorOrLocator, options);
     }
 
-    async isVisible(options?: { timeout?: number }): Promise<boolean> {
+    async isVisible(options?: { timeout?: number | undefined; } | undefined): Promise<boolean> {
         try {
             return await this.locators.isVisible(options);
         } catch (error) {
+            console.log(error);
             this.smartTestInfo.status = "failed";
             return false;
         }
+    }
+
+    async selectOption(values: string | ElementHandle<Node> | readonly string[] | {
+        value?: string;
+        label?: string;
+        index?: number;
+    } | readonly ElementHandle<Node>[] | readonly {
+        value?: string;
+        label?: string;
+        index?: number;
+    }[] | null, options?: {
+        force?: boolean;
+        noWaitAfter?: boolean;
+        timeout?: number;
+    }): Promise<Array<string>> {
+        return await this.locators.selectOption(values, options)
     }
 
 }
