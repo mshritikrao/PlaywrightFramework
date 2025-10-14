@@ -9,12 +9,14 @@ smartTest.describe('Elements Test', () => {
         await smartPage.goTo("https://demoqa.com/");
     });
 
-    smartTest('Elements text Box Test', async ({ homePage, textBoxPage }) => {
+    smartTest('Elements text Box Test', async ({ homePage, textBoxPage, Logger}) => {
+        Logger.logger.info('Starting Elements text Box Test');
         await homePage.selectTab(HomePageTabs.ELEMENTS);
         await textBoxPage.fillTextBox();
     });
-
-    smartTest('Elements Check Box Test', async ({ homePage, checkBoxPage }) => {
+    
+    smartTest('Elements Check Box Test', async ({ homePage, checkBoxPage,Logger }) => {
+        Logger.logger.info('Starting Check Box Test');
         await homePage.selectTab(HomePageTabs.ELEMENTS);
         await checkBoxPage.clickCheckBox(checkBoxList.COMMANDS);
     });
