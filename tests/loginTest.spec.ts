@@ -4,23 +4,26 @@ smartTest.describe('login Test', () => {
     smartTest.beforeEach(async ({ smartPage }, smartTestInfo) => {
         smartTestInfo.status = "passed";
         smartTestInfo.expectedStatus = "passed";
-        console.log(smartTestInfo.status + " check =")
-        console.log(smartTestInfo.expectedStatus + " check --")
     });
 
-    smartTest('Pyramid Core Test', async ({ loginPage }) => {
-        await loginPage.loginWith('Mnanda.kishore', 'Welcome@0');
+    smartTest('Pyramid Core Test', async ({ smartPage, loginPage,Logger }) => {
+        Logger.logger.info('Starting example test');
+        await smartPage.goTo("https://pyramidcore.pyramidci.com/");
+        // await loginPage.loginWith('xxxxx', 'xxx');
     });
 
     smartTest.afterEach(
         async ({ smartPage }, smartTestInfo) => {
+            const ss = await smartPage.screenshot({ path: `Screenshots/afterEach.png`, fullPage: true });
             if (smartTestInfo.status !== smartTestInfo.expectedStatus) {
-                const c = await smartPage.screenshot({ path: `screenshots/'_')}.png`, fullPage: true });
-                smartTestInfo.attach('fail test', { body: c, contentType: 'image/png' })
-
+                smartTestInfo.attach('fail test', { body: ss, contentType: 'image/png' })
                 // Optionally save HTML
                 // await smartPage.saveAsPDF?.({ path: `screenshots/${smartTestInfo.title.replace(/\s+/g, '_')}.pdf` });
+            } else {
+                smartTestInfo.attach('pass test', { body: ss, contentType: 'image/png' })
+
             }
+
         }
     )
 });
