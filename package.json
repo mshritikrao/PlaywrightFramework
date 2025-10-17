@@ -9,11 +9,13 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.56.0",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.5.2",
     "allure-commandline": "^2.34.1",
     "allure-playwright": "^3.4.1"
   },
   "dependencies": {
+    "js-yaml": "^4.1.0",
     "moment-timezone": "^0.6.0",
     "winston": "^3.18.3"
   }

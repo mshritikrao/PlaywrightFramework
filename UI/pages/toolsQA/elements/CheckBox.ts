@@ -94,6 +94,12 @@ export class CheckBox {
                     break;
                 case "Commands":
                     await this.Commands.click();
+                    expect(await this.smartPage.screenshot()).toMatchSnapshot('check.png',
+                        {
+                            maxDiffPixels: 50, 
+                            threshold: 0.2 
+                        }
+                    );
                     break;
                 case "WorkSpace":
                     await this.WorkSpace.click();

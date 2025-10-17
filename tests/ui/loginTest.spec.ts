@@ -1,4 +1,4 @@
-import { smartTest } from "../UI/pages/PageFixtur";
+import { smartTest } from "../../UI/pages/PageFixtur";
 
 smartTest.describe('login Test', () => {
     smartTest.beforeEach(async ({ smartPage }, smartTestInfo) => {
@@ -8,7 +8,7 @@ smartTest.describe('login Test', () => {
 
     smartTest('Pyramid Core Test', async ({ smartPage, loginPage,Logger }) => {
         Logger.logger.info('Starting example test');
-        await smartPage.goTo("https://pyramidcore.pyramidci.com/");
+        await smartPage.goTo("https://google.com/");
         // await loginPage.loginWith('xxxxx', 'xxx');
     });
 

@@ -1,6 +1,6 @@
-import { checkBoxList } from "../UI/pages/toolsQA/elements/CheckBox";
-import { HomePageTabs } from "../UI/pages/toolsQA/Home";
-import { smartTest } from "../UI/pages/toolsQA/pageFixtureToolsQA";
+import { checkBoxList } from "../../UI/pages/toolsQA/elements/CheckBox";
+import { HomePageTabs } from "../../UI/pages/toolsQA/Home";
+import { smartTest } from "../../UI/pages/toolsQA/pageFixtureToolsQA";
 
 smartTest.describe('Elements Test', () => {
     smartTest.beforeEach(async ({ smartPage }, smartTestInfo) => {
