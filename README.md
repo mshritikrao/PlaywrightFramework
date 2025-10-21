@@ -31,8 +31,10 @@ Allure Reports
 │   ├── pages/          # Page Object Models
 │   └── utils/          # Helper functions
 ├── API
-│   ├── requests/       # API request definitions
-│   ├── validations/    # Response validations
+│   ├── urls.yml        # API resource and Endpoint configuration
+│   ├── gorest          # API request definitions
+├── API
+│   ├── logfiles        # log files
 ├── config/             # Configuration files
 ├── docs/               # Documentation
 ├── README.md

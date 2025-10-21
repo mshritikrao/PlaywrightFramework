@@ -1,4 +1,4 @@
-import { test, TestInfo } from "@playwright/test"
+import { test, request, APIRequest, TestInfo, expect } from "@playwright/test"
 import { TestPageImp } from "./TestPageImp"
 import { BasePage } from "./BasePage"
 import { TestLocaterImp } from "./TestLocaterImp"
@@ -30,16 +30,13 @@ export const smartTest = test.extend<myFixturs>({
 
     },
 
-
-
-
     // smartLocator: async ({ smartPage, smartTestInfo }, use) => {
     //     await use(new TestLocaterImp(smartPage, smartTestInfo));
     // }
+
 });
 
-
-
+export { expect };
 // type myPage = {
 //     loginPage: Login
 // }
