@@ -92,7 +92,7 @@ npx allure open allure-report
 
 📌 TODOs
 
- Add database validation layer for PostgreSQL
+ Add a database validation layer for PostgreSQL
  Integrate Excel-based test data automation
  Add Docker support for containerized test execution
  Enhance API response schema validation
