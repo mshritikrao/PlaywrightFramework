@@ -5,7 +5,7 @@ import { BrowserFactory } from "../Browser/BrowserFactory";
 export class BasePage {
     protected page: Page;
 
-    constructor(page: Page) {
+    private constructor(page: Page) {
         this.page = page;
     }
 

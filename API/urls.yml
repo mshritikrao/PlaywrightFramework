@@ -1,0 +1,4 @@
+baseURL: https://gorest.co.in
+endpoints:
+  createNewUser: /public/v2/users
+  getUserDetails: /public/v2/users/{id}
