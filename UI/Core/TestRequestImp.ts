@@ -1,5 +1,6 @@
-import { APIRequest, APIRequestContext, APIResponse } from "@playwright/test";
+import { APIRequest, APIRequestContext, APIResponse, TestInfo } from "@playwright/test";
 import { ReadStream } from "fs";
+import { Logger } from "../utils/Logger";
 
 export class TestRequestImp {
 
@@ -11,9 +12,14 @@ export class TestRequestImp {
 
     private smartRequest: Promise<APIRequestContext>
     // private smartApiRequest: APIRequest
-    constructor(smartRequest: Promise<APIRequestContext>) {
+    private smartTestInfo: TestInfo
+    private Logger: Logger;
+
+    constructor(smartRequest: Promise<APIRequestContext>, Logger: Logger, smartTestInfo: TestInfo) {
         this.smartRequest = smartRequest;
         // this.smartApiRequest = smartApiRequest
+        this.smartTestInfo = smartTestInfo;
+        this.Logger = Logger;
     }
 
     // async newContexts(options?: {
