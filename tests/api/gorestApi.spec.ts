@@ -1,7 +1,5 @@
 import { smartTest } from "../../API/apiFixture";
-import { url } from "../../API/gorest";
 import { expect } from "../../UI/Core/TestImp";
-// import { expect } from "../../UI/Core/TestImp";
 
 smartTest.describe('Gorest API Tests', () => {
     smartTest.beforeEach(async ({ }, smartTestInfo) => {

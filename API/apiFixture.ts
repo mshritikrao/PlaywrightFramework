@@ -1,19 +1,18 @@
 import { gorest } from "./gorest";
 import { smartTest as baseTest } from "../UI/Core/TestImp";
 import { TestRequestImp } from "../UI/Core/TestRequestImp";
-import { APIRequest } from "@playwright/test";
 
 type myApi = {
     smartRequest: TestRequestImp
-    // smartAPIRequest: TestRequestImp
     gorestApi: gorest
+
 }
 
 export const smartTest = baseTest.extend<myApi>({
 
-    smartRequest: async ({ request }, use) => {
+    smartRequest: async ({ request, smartTestInfo, Logger }, use) => {
         // await use(new TestRequestImp(Promise.resolve(request)))
-        const imp = new TestRequestImp(Promise.resolve(request))
+        const imp = new TestRequestImp(Promise.resolve(request), Logger, smartTestInfo,)
         await use(imp);
         // await imp.dispose();
     },
@@ -24,8 +23,8 @@ export const smartTest = baseTest.extend<myApi>({
     //     await imp.dispose();
     // },
 
-    gorestApi: async ({ smartRequest, Logger, smartTestInfo }, use) => {
-        await use(new gorest(smartRequest, Logger, smartTestInfo))
+    gorestApi:  ({ smartRequest, Logger, smartTestInfo }, use) => {
+        use(new gorest(smartRequest, Logger, smartTestInfo))
     }
 
 })
